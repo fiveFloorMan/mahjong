@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
 const playerSchema = new Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   password: {
     type: String,
-    require: true
+    required: true
   },
   experience: {
     type: Number,
