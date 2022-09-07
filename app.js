@@ -2,6 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const routes = require('./routes/index')
 
 const app = express()
 const PORT = 3000
@@ -23,13 +24,7 @@ db.once('open', () => {
   console.log('mongodb connected')
 })
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
-app.get('/users/register', (req, res) => {
-  res.render('register')
-})
+app.use(routes)
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
