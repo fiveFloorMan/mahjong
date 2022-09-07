@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Record = require('../record')
 const mahjongScoreRecords = require('./mahjong-score-record.json')
 const data = mahjongScoreRecords.GameData // 過去的遊戲資料
-const data_index = data.length
 
 mongoose.connect('mongodb+srv://harviehung:mahjong@mahjong.uo9sd2f.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
