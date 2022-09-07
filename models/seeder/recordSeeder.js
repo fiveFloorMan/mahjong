@@ -18,7 +18,7 @@ db.once('open', () => {
     return Record.create({
       playerName: singleData.name,
       score: singleData.score,
-      date: singleData.score,
+      date: singleData.date,
       gameTimes: singleData.gameTimes,
       special: singleData.special
     })
