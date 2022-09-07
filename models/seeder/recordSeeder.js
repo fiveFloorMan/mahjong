@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Record = require('../record')
 const mahjongScoreRecords = require('./mahjong-score-record.json')
 const data = mahjongScoreRecords.GameData // 過去的遊戲資料
+const data_index = data.length
 
 mongoose.connect('mongodb+srv://harviehung:mahjong@mahjong.uo9sd2f.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -11,26 +12,19 @@ db.on('error', () => {
   console.log('recordSeeder is error')
 })
 
-db.once('open', async () => {
+db.once('open', () => {
   console.log('mongoose connected recordSeeder.js')
-  
-  // await Promise.all(
-  //   data.map(async () => {
-  //     await Record.create({
-  //       playerName: data.name,
-  //       score: data.score,
-  //       date: data.date,
-  //       gamesTime: data.gameTimes,
-  //       special: data.special,
-  //     })
-  //   })
-  // )
-  const data_index = data.length
-  console.log(data_index)
-  // for(let i = 0 ; i < data_index ; i++){
 
-  // }
-  
+  Promise.all(Array.from(data, singleData => {
+    return Record.create({
+      playerName: singleData.name,
+      score: singleData.score,
+      date: singleData.score,
+      gameTimes: singleData.gameTimes,
+      special: singleData.special
+    })
+
+  }))
   console.log('recordSeeder.js has been created')
 })
 

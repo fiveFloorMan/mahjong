@@ -15,7 +15,7 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  gamesTime: {
+  gameTimes: {
     type: Number,
     required: true
   },
