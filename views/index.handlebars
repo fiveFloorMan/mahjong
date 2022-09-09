@@ -3,25 +3,23 @@
   {{!-- item list --}}
   <div class="row mt-2">
     <div class="col-3"></div>
-    {{!-- Data --}}
+    {{!-- Rank 表 --}}
     <div class="col-9">
       <div class="row mt-2 mx-auto">
+        {{!-- 排頭 --}}
         <ul class="list-group fw-bold">
           <li class="row">
               <div class="col-8 list-group-item list-group-item-dark">
-                {{!-- rank number --}}
                 <div class="row">
                   <div class="col-2 text-center">Rank</div>
-                  {{!-- player name --}}
                   <div class="col-4 ">Player Name</div>
-                  {{!-- score --}}
                   <div class="col-4 text-center">Score</div>
-                  {{!-- game times --}}
                   <div class="col-2 text-end">Times</div>
                 </div>
               </div>
             </li>
         </ul>
+        {{!-- 內容 --}}
         <ul class="list-group fw-bold">
           {{#each playerDataRank}}
             <li class="row">
