@@ -55,10 +55,9 @@ router.get('/', (req, res) => {
         score: scoreArray[index],
         gameTimes: gameTimeArray[index]
       }))
-
+    res.render('index', { playerDataRank })
     })
     .catch(error => console.log(error))
-  res.render('index')
 })
 
 function pushAllPlayerName(Data) {
