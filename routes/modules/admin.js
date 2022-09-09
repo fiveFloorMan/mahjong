@@ -7,7 +7,8 @@ router.get('/addRecord', (req, res) => {
 })
 
 router.post('/addRecord', (req, res) => {
-  
+  const record = req.body
+  console.log('req.body', req.body)
 })
 
 module.exports = router
