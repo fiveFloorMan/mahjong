@@ -1,1 +1,29 @@
-Here is addRecord.hbs
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-2"></div>
+    {{!-- card --}}
+    <div class="col-8">
+      {{!-- player name --}}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Player Name">
+        <label for="playerName">Player Name</label>
+      </div>
+      {{!-- score --}}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="score" name="score" placeholder="score">
+        <label for="score">Score</label>
+      </div>
+      {{!-- game time --}}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="gameTimes" name="gameTimes" placeholder="Game Times">
+        <label for="gameTimes">Game Times</label>
+      </div>
+      {{!-- date --}}
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+        <label for="date">Date</label>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
