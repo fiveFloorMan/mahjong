@@ -33,13 +33,29 @@ router.get('/', (req, res) => {
       })
 
       // 組成一個Array
-      const playerData = filterPlayerName.map((name, index) => ({ playerName: name, score: scoreArray[index], gameTimes: gameTimeArray[index]}))
-      console.log('playerData', playerData)
+      const playerData = filterPlayerName.map((name, index) => ({ 
+        playerName: name,
+        score: scoreArray[index],
+        gameTimes: gameTimeArray[index]
+      }))
 
-      // 以下去check console.log
-      // console.log('filterPlayerName', filterPlayerName)
-      // console.log('scoreArray', scoreArray)
-      // console.log('gameTimeArray', gameTimeArray)
+      //排序
+      playerData.sort(function(a, b) {
+        return b.score - a.score //降冪
+      })
+      console.log(playerData)
+      let rankNumber = []
+      for(let i = 1; i <= playerData.length; i++){
+        rankNumber.push(i)
+      }
+      const playerDataRank = rankNumber.map((rank, index) => ({
+        rank: rank,
+        playerName: playerData[index].playerName,
+        score: scoreArray[index],
+        gameTimes: gameTimeArray[index]
+      }))
+
+      console.log(playerDataRank)
     })
     .catch(error => console.log(error))
   res.render('index')
