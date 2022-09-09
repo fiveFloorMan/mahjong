@@ -43,7 +43,8 @@ router.get('/', (req, res) => {
       playerData.sort(function(a, b) {
         return b.score - a.score //降冪
       })
-      console.log(playerData)
+      
+      // 加入排行數字
       let rankNumber = []
       for(let i = 1; i <= playerData.length; i++){
         rankNumber.push(i)
@@ -55,7 +56,6 @@ router.get('/', (req, res) => {
         gameTimes: gameTimeArray[index]
       }))
 
-      console.log(playerDataRank)
     })
     .catch(error => console.log(error))
   res.render('index')
