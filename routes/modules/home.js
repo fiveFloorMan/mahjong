@@ -31,10 +31,15 @@ router.get('/', (req, res) => {
         scoreArray.push(score)
         gameTimeArray.push(gameTimes)
       })
+
+      // 組成一個Array
+      const playerData = filterPlayerName.map((name, index) => ({ playerName: name, score: scoreArray[index], gameTimes: gameTimeArray[index]}))
+      console.log('playerData', playerData)
+
       // 以下去check console.log
-      console.log('filterPlayerName', filterPlayerName)
-      console.log('scoreArray', scoreArray)
-      console.log('gameTimeArray', gameTimeArray)
+      // console.log('filterPlayerName', filterPlayerName)
+      // console.log('scoreArray', scoreArray)
+      // console.log('gameTimeArray', gameTimeArray)
     })
     .catch(error => console.log(error))
   res.render('index')
