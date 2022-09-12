@@ -12,7 +12,7 @@ db.once('open', () => {
   console.log('mongodb connected playerSeeder.js')
   
   Player.create({
-    name: 'test01',
+    playerName: 'test01',
     password: 'test01',
     experience: 10,
   })

@@ -8,12 +8,12 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const { name, password, confirmPassword, experience } = req.body
+  const { playerName, password, confirmPassword, experience } = req.body
 
   // register 過程中的錯誤辨認
   const errors = []
   // 有沒有填寫的欄位
-  if ( !name || !password || !confirmPassword ) {
+  if ( !playerName || !password || !confirmPassword ) {
     errors.push({ message: '所有欄位都是必填的'})
   }
   // password 和 confirmPassword 是否相同
@@ -25,7 +25,7 @@ router.post('/register', (req, res) => {
     return res.render('register', { errors })
   }
   // name 是否已經被註冊過
-  const registeredName = Player.findOne({ name })
+  const registeredName = Player.findOne({ playerName })
   if (registeredName) {
     errors.push({ message: '這個名稱已經被註冊過了'})
     return res.render('register', { errors })
