@@ -7,7 +7,7 @@ const Record = require('../../models/record.js') // 整包資料
 const allPlayerName = [] 
 
 router.get('/', (req, res) => {
-  Record.find() //非同步
+  Record.find()
     .lean()
     .then(Data => {
       // 拿出playerName
