@@ -1,4 +1,5 @@
 const express = require('express')
+const player = require('../../models/player')
 const router = express.Router()
 
 const Player = require('../../models/player')
@@ -10,7 +11,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const { playerName, password, confirmPassword, experience } = req.body
 
-  // register 過程中的錯誤辨認
+  // 註冊防呆
   const errors = []
   // 有沒有填寫的欄位
   if ( !playerName || !password || !confirmPassword ) {
@@ -25,17 +26,20 @@ router.post('/register', (req, res) => {
     return res.render('register', { errors })
   }
   // name 是否已經被註冊過
-  const registeredName = Player.findOne({ playerName })
-  if (registeredName) {
-    errors.push({ message: '這個名稱已經被註冊過了'})
-    return res.render('register', { errors })
-  }  
-
-
-  if ( errors.length === 0){
-    Player.create({ name, password, experience })
-    return res.render('login', { name, password})
-  }
+  Player.findOne({ playerName })
+    .lean()
+    .then(registerName => {
+      console.log('registerName', registerName)
+      if (registerName) {
+        errors.push({ message: '這個名稱已經被註冊過了'})
+        return res.render('register', { errors })
+      }
+      // 通過防呆後建立帳號
+      if (!errors.length) {
+        Player.create({ playerName, password, experience})
+        return res.render('login')
+      }
+    })
   
 })
 
