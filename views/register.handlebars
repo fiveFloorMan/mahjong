@@ -1,20 +1,28 @@
-<div class="row mt-3">
-  <div class="col-6 mx-auto">
+<div class="row mt-4">
+  <div class="col-4 mx-auto">
     <div class="card">
       <div class="card-body">
         <h1 class="text-center fw-bold">Register</h1>
         {{!-- {{> message}} --}}
         <form action="/users/register" method="POST" class="fs-4">
-          <div class="mb-3">
+          {{!-- player name --}}
+          <div class="mb-4">
             <label for="name" class="form-label">Player Name：</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="your name">
           </div>
-          <div class="mb-3">
+          {{!-- password --}}
+          <div class="mb-4">
             <label for="password" class="form-label">User Password：</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="your password here">
           </div>
-          <div class="mb-3">
+          {{!-- confirm password --}}
+          <div class="mb-4">
             <label for="confirmPassword" class="form-label">Confirm Password：</label>
+            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="your password again">
+          </div>
+          {{!-- experience --}}
+          <div class="mb-4">
+            <label for="confirmPassword" class="form-label">Expreience Of MJ：</label>
             <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="your password again">
           </div>
           <button type="submit" class="btn btn-warning col-12 my-3 fs-4">Register</button>
