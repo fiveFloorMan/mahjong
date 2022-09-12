@@ -20,7 +20,7 @@ router.post('/register', (req, res) => {
   if ( password !== confirmPassword ) {
     errors.push({ message: '密碼和確認密碼不相符'})
   }
-  
+
   if (errors.length) {
     return res.render('register', { errors })
   }
@@ -28,12 +28,13 @@ router.post('/register', (req, res) => {
   const registeredName = Player.findOne({ name })
   if (registeredName) {
     errors.push({ message: '這個名稱已經被註冊過了'})
+    return res.render('register', { errors })
   }  
 
 
-  if (!errors.length){
+  if ( errors.length === 0){
     Player.create({ name, password, experience })
-    res.redirect('/users/login')
+    return res.render('login', { name, password})
   }
   
 })
