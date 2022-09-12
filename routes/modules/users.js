@@ -10,10 +10,14 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const registerData = req.body
   Player.create({
-    
+    name: registerData.name,
+    password: registerData.password,
+    experience: registerData.experience
   })
+  res.redirect('/users/login')
 })
 
+// 登入
 router.get('/login', (req, res) => {
   res.render('login')
 })
