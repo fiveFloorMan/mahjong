@@ -1,5 +1,4 @@
 const express = require('express')
-const player = require('../../models/player')
 const router = express.Router()
 
 const Player = require('../../models/player')
@@ -29,7 +28,6 @@ router.post('/register', (req, res) => {
   Player.findOne({ playerName })
     .lean()
     .then(registerName => {
-      console.log('registerName', registerName)
       if (registerName) {
         errors.push({ message: '這個名稱已經被註冊過了'})
         return res.render('register', { errors })
