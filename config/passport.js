@@ -12,7 +12,6 @@ module.exports = app => {
   passport.use(new LocalStrategy({ usernameField: 'playerName'}, (playerName, password, done) => {
     Player.findOne({ playerName: playerName })
       .then(user => {
-        console.log('user', user)
         if (!user) {
           return done(null, false, { message: '這個帳號並不存在'})
         } 
