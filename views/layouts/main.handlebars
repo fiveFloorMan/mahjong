@@ -37,7 +37,11 @@
           <a class="nav-link active" href="/users/register">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/users/login">Log in</a>
+          {{#if isAuthenticated}}
+            <a class="nav-link active" href="/users/logout">Log out</a>
+          {{else}}
+            <a class="nav-link active" href="/users/login">Log in</a>
+          {{/if}}
         </li>
 
       </ul>
