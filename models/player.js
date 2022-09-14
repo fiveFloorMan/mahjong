@@ -13,6 +13,9 @@ const playerSchema = new Schema({
   experience: {
     type: Number,
   },
+  isAdmin: {
+    type: Boolean,
+  }
 })
 
 module.exports = mongoose.model('Player', playerSchema)
