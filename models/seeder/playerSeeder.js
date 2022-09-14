@@ -15,5 +15,12 @@ db.once('open', () => {
     playerName: 'test01',
     password: 'test01',
     experience: 10,
+    isAdmin: false
+  })
+  Player.create({
+    playerName: 'admin01',
+    password: 'admin01',
+    experience: 10,
+    isAdmin: true
   })
 })
