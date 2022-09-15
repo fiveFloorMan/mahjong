@@ -1,3 +1,50 @@
-{{#each Data}}
-  {{this.playerName}}
-{{/each}}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-3"></div>
+    {{!-- edit 表 --}}
+      <div class="col-9">
+        <div class="row mt-2 mx-auto">
+          {{!-- 排頭 --}}
+          <ul class="list-group fw-bold">
+            <li class="row">
+              <div class="col-8 list-group-item list-group-item-dark">
+                <div class="row">
+                  <div class="col-3">Player Name</div>
+                  <div class="col-2 text-center">Score</div>
+                  <div class="col-4 text-center">date</div>
+                  <div class="col-1 text-center">Times</div>
+                  <div class="col-1 text-center"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          {{!-- 內容 --}}
+          <ul class="list-group fw-bold">
+            {{#each Data}}
+              <form action="/admin/edit/{{this._id}}" method="POST">
+                <li class="row">
+                  <div class="col-8 list-group-item list-group-item-light">
+                    <div class="row">
+                      {{!-- player name --}}
+                      <div class="col-3">{{ this.playerName }}</div>
+                      {{!-- score --}}
+                      <div class="col-2 text-end">{{ this.score }}</div>
+                      {{!-- date --}}
+                      <div class="col-4 text-center">{{ this.date }}</div>
+                      {{!-- game times --}}
+                      <div class="col-1 text-center">{{ this.gameTimes }}</div>
+                      {{!-- edit butten --}}
+                      <button class="col-1 text-center btn btn-outline-secondary btn-sm" type="submit">E</button>
+                    </div>
+                  </div>
+                </li>
+              </form>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+  </div>
+</div>
+
+        
+        
