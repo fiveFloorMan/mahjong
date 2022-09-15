@@ -21,7 +21,6 @@
           {{!-- 內容 --}}
           <ul class="list-group fw-bold">
             {{#each Data}}
-              <form action="/admin/edit/{{this._id}}" method="POST">
                 <li class="row">
                   <div class="col-8 list-group-item list-group-item-light">
                     <div class="row">
@@ -33,12 +32,17 @@
                       <div class="col-4 text-center">{{ this.date }}</div>
                       {{!-- game times --}}
                       <div class="col-1 text-center">{{ this.gameTimes }}</div>
-                      {{!-- edit butten --}}
-                      <button class="col-1 text-center btn btn-outline-secondary btn-sm" type="submit">E</button>
+                      {{!-- edit btn --}}
+                      <form class="col-1" action="/admin/edit/{{this._id}}" method="POST">
+                        <button class="text-center btn btn-outline-secondary btn-sm" type="submit">Edit</button>
+                      </form>
+                      {{!-- delete btn --}}
+                      <form class="col-1" action="/admin/delete/{{this._id}}?_method=DELETE" method="POST">
+                        <button class="text-center btn btn-outline-danger btn-sm" type="submit">Del</button>
+                      </form>
                     </div>
                   </div>
                 </li>
-              </form>
             {{/each}}
           </ul>
         </div>
