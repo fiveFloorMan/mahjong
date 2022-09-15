@@ -27,7 +27,7 @@ router.post('/addRecord', (req, res) => {
     gameTimes: newRecord.gameTimes,
     date: newRecord.date
   })
-  success_msg.push({ message: `成功建立${newRecord.playerName}的紀錄了`})
+  success_msg.push(`成功建立${newRecord.playerName}的紀錄了`)
   console.log('success_msg', success_msg)
   // 可以再做一個提示新增成功的優化
   res.render('addRecord', { success_msg })
