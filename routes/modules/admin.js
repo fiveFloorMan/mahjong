@@ -10,7 +10,7 @@ router.get('/addRecord', (req, res) => {
   const { isAdmin } = res.locals.user
 
   // 登入者是否有管理員身分辦別
-  if( isAdmin === true ){
+  if (isAdmin === true) {
     return res.render('addRecord')
   } else {
     errors.push({ message: '請先登入並且確保有管理員的權限' })
@@ -37,9 +37,15 @@ router.get('/edit', (req, res) => {
   Record.find()
     .lean()
     .then(Data => {
-      res.render('editRecord', {Data})
+      const { isAdmin } = res.locals.user
+      if (isAdmin === true){
+        return res.render('editRecord', {Data})        
+      } else {
+        errors.push({ message: '請先登入並且確保有管理員的權限' })
+        return res.render('login', { errors })
+      }
     })
     .catch(error => console.log(error))
-
 })
+
 module.exports = router
