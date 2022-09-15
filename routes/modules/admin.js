@@ -19,6 +19,7 @@ router.get('/addRecord', (req, res) => {
 
 })
 
+// 新增紀錄行動 (優化可以為一次增加多個紀錄)
 router.post('/addRecord', (req, res) => {
   const newRecord = req.body  
   Record.create({
@@ -28,10 +29,7 @@ router.post('/addRecord', (req, res) => {
     date: newRecord.date
   })
   success_msg.push(`成功建立${newRecord.playerName}的紀錄了`)
-  console.log('success_msg', success_msg)
-  // 可以再做一個提示新增成功的優化
   res.render('addRecord', { success_msg })
 })
 
 module.exports = router
-
