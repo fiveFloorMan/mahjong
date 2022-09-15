@@ -3,7 +3,6 @@ const router = express.Router()
 
 const Record = require('../../models/record.js')
 
-const success_msg = []
 const errors = []
 // 新增紀錄
 router.get('/addRecord', (req, res) => {
@@ -27,8 +26,11 @@ router.post('/addRecord', (req, res) => {
     gameTimes: newRecord.gameTimes,
     date: newRecord.date
   })
-  success_msg.push(`成功建立${newRecord.playerName}的紀錄了`)
-  res.render('addRecord', { success_msg })
+  .then(() => { req.flash( 'success_msg', `成功建立${newRecord.playerName}的紀錄了` )})
+  .then(() => {
+    return res.redirect('/admin/addRecord')
+  })
+  .catch(error => console.log(error))
 })
 
 // 編輯玩家資料
