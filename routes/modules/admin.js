@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Record = require('../../models/record.js')
 
+const success_msg = []
 const errors = []
 // 新增紀錄
 router.get('/addRecord', (req, res) => {
@@ -26,8 +27,10 @@ router.post('/addRecord', (req, res) => {
     gameTimes: newRecord.gameTimes,
     date: newRecord.date
   })
+  success_msg.push({ message: `成功建立${newRecord.playerName}的紀錄了`})
+  console.log('success_msg', success_msg)
   // 可以再做一個提示新增成功的優化
-  res.redirect('/admin/addRecord')
+  res.render('addRecord', { success_msg })
 })
 
 module.exports = router
