@@ -33,6 +33,7 @@ router.post('/addRecord', (req, res) => {
 })
 
 // 編輯玩家資料
+// layouts
 router.get('/edit', (req, res) => {
   Record.find()
     .lean()
@@ -44,6 +45,17 @@ router.get('/edit', (req, res) => {
         errors.push({ message: '請先登入並且確保有管理員的權限' })
         return res.render('login', { errors })
       }
+    })
+    .catch(error => console.log(error))
+})
+
+// edit feature
+router.post('/edit/:recordId', (req, res) => {
+  const { recordId } = req.params
+  Record.findById({ _id: recordId })
+    .lean()
+    .then(editedRecord => {
+      return render('editRecordSingle', { editedRecord })
     })
     .catch(error => console.log(error))
 })
