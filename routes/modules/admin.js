@@ -61,6 +61,19 @@ router.post('/edit/:recordId', (req, res) => {
 })
 
 router.put('/edit/:recordId', (req, res) => {
-
+  const { recordId } = req.params
+  const newEditData = req.body
+  console.log('req.body', req.body)
+  Record.findOneAndUpdate({ _id: recordId }, {
+    playerName: newEditData.playerName,
+    score: newEditData.score,
+    gameTimes: newEditData.gameTimes,
+    date: newEditData.date,
+  }, { new: false })
+    .then(() => {
+      return res.redirect('/admin/edit')
+    })
+    .catch(error => console.log(error))
 })
+
 module.exports = router

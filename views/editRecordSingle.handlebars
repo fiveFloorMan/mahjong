@@ -2,7 +2,7 @@
   <div class="row mt-4 mx-auto">
     {{> message}}
     {{!-- card --}}
-    <form action="/admin/edit/{{recordId}}?_method=PUT" method="POST">
+    <form action="/admin/edit/{{editedRecord._id}}?_method=PUT" method="POST">
     <div class="col-2"></div>
       <div class="col-8 mx-auto">
         {{!-- player name --}}
