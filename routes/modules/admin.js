@@ -76,4 +76,14 @@ router.put('/edit/:recordId', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 刪除record資料
+router.delete('/delete/:recordId', (req, res) => {
+  const { recordId } = req.params
+  Record.deleteOne({ _id: recordId })
+    .lean()
+    .then(() => { 
+      return res.redirect('/admin/edit')
+    })
+    .catch(error => console.log(error))
+})
 module.exports = router
