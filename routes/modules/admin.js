@@ -3,9 +3,19 @@ const router = express.Router()
 
 const Record = require('../../models/record.js')
 
+const errors = []
 // 新增紀錄
 router.get('/addRecord', (req, res) => {
-  res.render('addRecord')
+  const { isAdmin } = res.locals.user
+
+  // 登入者是否有管理員身分辦別
+  if( isAdmin === true ){
+    return res.render('addRecord')
+  } else {
+    errors.push({ message: '請先登入並且確保有管理員的權限' })
+    res.render('login', { errors })
+  }
+
 })
 
 router.post('/addRecord', (req, res) => {
