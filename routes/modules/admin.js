@@ -34,6 +34,12 @@ router.post('/addRecord', (req, res) => {
 
 // 編輯玩家資料
 router.get('/edit', (req, res) => {
-  
+  Record.find()
+    .lean()
+    .then(Data => {
+      res.render('editRecord', {Data})
+    })
+    .catch(error => console.log(error))
+
 })
 module.exports = router
