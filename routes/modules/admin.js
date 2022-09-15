@@ -16,7 +16,6 @@ router.get('/addRecord', (req, res) => {
     errors.push({ message: '請先登入並且確保有管理員的權限' })
     res.render('login', { errors })
   }
-
 })
 
 // 新增紀錄行動 (優化可以為一次增加多個紀錄)
