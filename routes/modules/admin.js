@@ -55,9 +55,12 @@ router.post('/edit/:recordId', (req, res) => {
   Record.findById({ _id: recordId })
     .lean()
     .then(editedRecord => {
-      return render('editRecordSingle', { editedRecord })
+      return res.render('editRecordSingle', { editedRecord })
     })
     .catch(error => console.log(error))
 })
 
+router.put('/edit/:recordId', (req, res) => {
+
+})
 module.exports = router

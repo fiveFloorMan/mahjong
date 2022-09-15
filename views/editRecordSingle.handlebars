@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row mt-4 mx-auto">
+    {{> message}}
+    {{!-- card --}}
+    <form action="/admin/edit/{{recordId}}?_method=PUT" method="POST">
+    <div class="col-2"></div>
+      <div class="col-8 mx-auto">
+        {{!-- player name --}}
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="playerName" name="playerName" placeholder="Player Name" value="{{editedRecord.playerName}}">
+          <label for="playerName">Player Name</label>
+        </div>
+        {{!-- score --}}
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="score" name="score" placeholder="score" value="{{editedRecord.score}}">
+          <label for="score">Score</label>
+        </div>
+        {{!-- game time --}}
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="gameTimes" name="gameTimes" placeholder="Game Times" value="{{editedRecord.gameTimes}}">
+          <label for="gameTimes">Game Times</label>
+        </div>
+        {{!-- date --}}
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="date" name="date" placeholder="Date" value="{{editedRecord.date}}">
+          <label for="date">Date</label>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </form>
+  </div>
+</div>
