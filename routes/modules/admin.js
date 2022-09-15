@@ -32,4 +32,8 @@ router.post('/addRecord', (req, res) => {
   res.render('addRecord', { success_msg })
 })
 
+// 編輯玩家資料
+router.get('/edit', (req, res) => {
+  
+})
 module.exports = router
