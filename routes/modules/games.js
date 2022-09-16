@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const calendar = require('node-calendar')
 
 const Record = require('../../models/record')
 
@@ -46,6 +47,7 @@ router.get('/playerScore/search', (req, res) => {
 // 預定games時間
 router.get('/reserve', (req, res) => {
   
+  console.log(isSaturday)
 })
 
 
