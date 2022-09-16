@@ -13,6 +13,4 @@ router.use('/games', games)
 router.use('/users', users)
 router.use('/', home)
 
-
-
 module.exports = router
