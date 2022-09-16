@@ -1,25 +1,5 @@
 <div class="container">
   <div class="row mt-4">
-    {{!-- Search card --}}
-    <div class="col-3"></div>
-    <div class="col-6">
-      <div class="row fw-bold">
-        {{!-- Player name --}}
-        <form action="/games/playerScore/search" method="GET">
-          <div class="mb-4">
-            <select class="form-select form-select-lg mb-3" id="category" name="keyPlayerName" aria-label=".form-select-lg example" onchange="form.submit()">
-              <option selected>-- 請選擇玩家 --</option>
-              {{#each playerNameArraySet}}
-              <option value="{{ this }}">{{ this }}</option>
-              {{/each}}
-            </select>
-          </div>
-        </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-4">
     <div class="col-3"></div>
     {{!-- Data 表 --}}
       <div class="col-9">
@@ -55,6 +35,19 @@
                   </div>
                 </li>
             {{/each}}
+          </ul>
+          {{!-- 排尾 Total --}}
+          <ul class="list-group fw-bold">
+            <li class="row">
+              <div class="col-8 list-group-item list-group-item-dark">
+                <div class="row">
+                  <div class="col-3">Total</div>
+                  <div class="col-2 text-end">{{totalScore}}</div>
+                  <div class="col-5 text-center">---</div>
+                  <div class="col-2 text-center">{{totalGameTimes}}</div>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
