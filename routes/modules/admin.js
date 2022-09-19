@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Record = require('../../models/record.js')
+const Reserve = require('../../models/reserve')
 
 const errors = []
 // 新增紀錄
@@ -94,6 +95,15 @@ router.get('/openGameReserve', (req, res) => {
   res.render('openGameReserve')
 })
 
-
+router.post('/openGameReserve', (req, res) => {
+  const openGame = req.body
+  console.log(openGame)
+  Reserve.create({
+    gameName: openGame.gameName,
+    openAdmin: res.locals.user.playerName,
+    date: openGame.openGameDate
+  })
+  res.render('openGameReserve')
+})
 
 module.exports = router

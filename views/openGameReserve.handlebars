@@ -1,0 +1,22 @@
+<div class="row mt-4">
+  <div class="col-4 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        {{> message}}
+        <form action="/admin/openGameReserve" method="POST" class="fs-4">
+          {{!-- Open Date --}}
+          <div class="mb-4">
+            <label for="openGameDate" class="form-label">Open Game Date</label>
+            <input type="Date" class="form-control" name="openGameDate" id="openGameDate" placeholder="Open Date" required>
+          </div>
+          {{!-- Game Name --}}
+          <div class="mb-4">
+            <label for="gameName" class="form-label">Enter Game Name</label>
+            <input type="text" class="form-control" name="gameName" id="gameName" value='Game' placeholder="gameName" required>
+          </div>
+          <button type="submit" class="btn btn-warning col-12 my-3 fs-4">OPEN</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

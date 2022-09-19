@@ -11,7 +11,6 @@ const recordSchema = new Schema({
     required: true
   },
   date: {
-    // 呈現方式要與mahjong-score-record.json相同 ex: "1-Feb"
     type: String,
     required: true
   },
