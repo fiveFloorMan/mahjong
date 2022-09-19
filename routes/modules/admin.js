@@ -118,4 +118,8 @@ router.post('/:reserveID/openGameReserve/edit', (req, res) => {
   res.redirect('/')
 })
 
+// 由admin Delete預約的資料
+router.delete('/:reserveID/openGameReserve/delete', (req, res) => {
+  res.redirect('/')
+})
 module.exports = router
