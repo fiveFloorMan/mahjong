@@ -24,6 +24,6 @@ db.once('open', () => {
     })
 
   }))
-  console.log('recordSeeder.js has been created')
+  console.log('recordSeeder.js has been created, PRESS ^c for exit')
 })
 
