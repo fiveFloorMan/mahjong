@@ -34,7 +34,7 @@ router.post('/addRecord', (req, res) => {
 })
 
 // 編輯玩家資料
-// layouts
+// layouts 頁面
 router.get('/edit', (req, res) => {
   Record.find()
     .lean()
@@ -87,4 +87,13 @@ router.delete('/delete/:recordId', (req, res) => {
     })
     .catch(error => console.log(error))
 })
+
+// 開放可以預約的時間
+router.get('/openGameReserve', (req, res) => {
+  
+  res.render('openGameReserve')
+})
+
+
+
 module.exports = router
