@@ -103,7 +103,9 @@ router.post('/openGameReserve', (req, res) => {
     openAdmin: res.locals.user.playerName,
     date: openGame.openGameDate
   })
-  res.render('openGameReserve')
+  .then(() => {req.flash('success_msg', `成功開放了${openGame.openGameDate}的預約時間` )})
+  .then(() => { return res.redirect('/admin/openGameReserve')})  
+  
 })
 
 module.exports = router
