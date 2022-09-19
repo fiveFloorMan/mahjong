@@ -91,8 +91,12 @@ router.delete('/delete/:recordId', (req, res) => {
 
 // 開放可以預約的時間
 router.get('/openGameReserve', (req, res) => {
-  
-  res.render('openGameReserve')
+  Reserve.find()
+    .lean()
+    .then(reserve => {
+      return res.render('openGameReserve', {reserve})
+    })
+    .catch(error => console.log(error))
 })
 
 router.post('/openGameReserve', (req, res) => {
@@ -105,7 +109,7 @@ router.post('/openGameReserve', (req, res) => {
   })
   .then(() => {req.flash('success_msg', `成功開放了${openGame.openGameDate}的預約時間` )})
   .then(() => { return res.redirect('/admin/openGameReserve')})  
-  
+  .catch(error => console.log(error))
 })
 
 module.exports = router

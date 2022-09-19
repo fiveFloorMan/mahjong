@@ -31,6 +31,7 @@ db.once('open', () => {
     gameName: "test game",
     openAdmin : "admin01",
     date: date,
+    participatingPlayer: ["test1", "test2", "test3", "test4"]
   })
   console.log('reserveSeeder.js has been created, PRESS ^c for exit')
 })
