@@ -46,8 +46,7 @@ router.get('/playerScore/search', (req, res) => {
 
 // 預定games時間
 router.get('/reserve', (req, res) => {
-  
-  console.log(isSaturday)
+  res.render('gameReserve')
 })
 
 
