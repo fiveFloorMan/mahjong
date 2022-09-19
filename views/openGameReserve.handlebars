@@ -27,7 +27,7 @@
     <li class="row">
       <div class="list-group-item list-group-item-dark">
         <div class="row">
-          <div class="col-7 text-center">Participating Player</div>
+          <div class="col-7 text-center">Game Name / Participating Player</div>
           <div class="col-3 text-center">Date</div>
           <div class="col-2 text-center">Edit/DEL</div>
         </div>
@@ -41,8 +41,11 @@
             <div class="row">
               <div class="col-7 text-center">
                 <div class="row">
+                  <div class="col-12 text-center">{{this.gameName}}</div>
                   {{#each this.participatingPlayer}}
-                  <div class="col-3 text-center">{{this}}</div>
+                  <div class="col-3 text-center">
+                    {{this}}
+                  </div>
                   {{/each}}
                 </div>
               </div>
