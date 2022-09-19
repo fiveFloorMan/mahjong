@@ -2,7 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Reserve = new Schema({
-  openAdmin : {
+  gameName: {
+    type: String,
+    required: true
+  },
+  openAdmin: {
     type: String,
     required: true
   },
