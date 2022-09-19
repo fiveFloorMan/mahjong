@@ -43,14 +43,21 @@
                 <div class="row">
                   <div class="col-12 text-center">{{this.gameName}}</div>
                   {{#each this.participatingPlayer}}
-                  <div class="col-3 text-center">
+                  <div class="col-3 text-center text-align-center">
                     {{this}}
                   </div>
                   {{/each}}
                 </div>
               </div>
               <div class="col-3 text-center">{{this.date}}</div>
-              <div class="col-2 text-center">Edit/DEL</div>
+              <div class="col-1 text-center">
+                <form action="/admin/{{this._id}}/openGameReserve/edit" method="POST">
+                  <button type="submit" class="btn btn-primary" >E</button>
+                </form>
+              </div>
+              
+
+              <div class="col-1 text-center">D</div>
             </div>
           </div>
         </li>

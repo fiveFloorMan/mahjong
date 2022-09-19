@@ -99,6 +99,7 @@ router.get('/openGameReserve', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 由admin 新增可以預約的時間
 router.post('/openGameReserve', (req, res) => {
   const openGame = req.body
   console.log(openGame)
@@ -110,6 +111,11 @@ router.post('/openGameReserve', (req, res) => {
   .then(() => {req.flash('success_msg', `成功開放了${openGame.openGameDate}的預約時間` )})
   .then(() => { return res.redirect('/admin/openGameReserve')})  
   .catch(error => console.log(error))
+})
+
+// 由admin 更新預約的資料
+router.post('/:reserveID/openGameReserve/edit', (req, res) => {
+  res.redirect('/')
 })
 
 module.exports = router
