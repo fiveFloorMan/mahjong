@@ -25,4 +25,3 @@ db.once('open', () => {
   })
   console.log('reserveSeeder.js has been created, PRESS ^c for exit')
 })
-
