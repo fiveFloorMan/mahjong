@@ -16,7 +16,7 @@
           <label for="date">Date</label>
         </div>
         {{!-- participating player --}}
-        <form action="/admin/{{reserveId}}/participatingPlayerChange/openGameReserve/edit?_method=PUT" method="POST">
+        <form action="/admin/{{reserveId}}/participatingPlayerChange/openGameReserve/edit" method="POST">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="participatingPlayer" name="participatingPlayer" placeholder="participatingPlayer" value="{{reservedEdit.participatingPlayer}}" readonly>
             <label for="participatingPlayer">Participating Player</label>
