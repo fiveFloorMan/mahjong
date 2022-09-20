@@ -125,6 +125,15 @@ router.post('/:reserveId/openGameReserve/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 由admin 更改participating player
+router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
+  const { reservedId } = req.params
+  console.log(req.body)
+  const {participatingPlayer} = req.body
+  console.log('participatingPlayer', participatingPlayer)
+  return res.render('openGameReservePlayerEdit' )
+})
+
 router.put('/:reserveId/openGameReserve/edit', (req, res) => {
   
 })
