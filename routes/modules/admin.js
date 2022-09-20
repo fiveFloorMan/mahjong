@@ -114,12 +114,23 @@ router.post('/openGameReserve', (req, res) => {
 })
 
 // 由admin 更新預約的資料
-router.post('/:reserveID/openGameReserve/edit', (req, res) => {
-  res.redirect('/')
+router.post('/:reserveId/openGameReserve/edit', (req, res) => {
+  const { reserveId } = req.params
+  Reserve.findById({ _id: reserveId })
+    .lean()
+    .then(reservedEdit => {  
+      const reserveParticipatingPlayerArray = reservedEdit.participatingPlayer
+      return res.render('openGameReserveEdit', {reservedEdit, reserveId, reserveParticipatingPlayerArray})
+    })
+    .catch(error => console.log(error))
+})
+
+router.put('/:reserveId/openGameReserve/edit', (req, res) => {
+  
 })
 
 // 由admin Delete預約的資料
-router.delete('/:reserveID/openGameReserve/delete', (req, res) => {
+router.delete('/:reserveId/openGameReserve/delete', (req, res) => {
   res.redirect('/')
 })
 module.exports = router

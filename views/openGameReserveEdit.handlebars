@@ -1,7 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="card">
-      
-    </div>
+  <div class="row mt-4 mx-auto">
+    {{> message}}
+    {{!-- card --}}
+    <form action="/admin/{{reserveId}}/openGameReserve/edit?_method=PUT" method="POST">
+    <div class="col-2"></div>
+      <div class="col-8 mx-auto">
+        {{!-- game name --}}
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="gameName" name="gameName" placeholder="gameName" value="{{reservedEdit.gameName}}">
+          <label for="gameName">Game Name</label>
+        </div>
+        {{!-- date --}}
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="date" name="date" placeholder="Date" value="{{reservedEdit.date}}">
+          <label for="date">Date</label>
+        </div>
+        {{!-- participating player --}}
+        <form action="/admin/{{reserveId}}/participatingPlayerChange/openGameReserve/edit?_method=PUT" method="POST">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="participatingPlayer" name="participatingPlayer" placeholder="participatingPlayer" value="{{reservedEdit.participatingPlayer}}" readonly>
+            <label for="participatingPlayer">Participating Player</label>
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-secondary" type="submit">Change Player</button>
+          </div>
+        </form>
+        {{!-- change data btn --}}
+        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+          <button class="btn btn-success" type="submit">Change Data </button>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </form>
   </div>
 </div>
