@@ -130,6 +130,7 @@ router.post('/:reservedId/openGameReserve/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 編輯game的data
 router.post('/gameChange', (req, res) => {
   const data = req.body
   Reserve.findOneAndUpdate({ _id: data.reservedId }, {
@@ -142,7 +143,6 @@ router.post('/gameChange', (req, res) => {
     .then(() => res.redirect('/admin/openGameReserve'))
     .catch(error => console.log(error))
 })
-
 
 // 由admin 編輯預約的資料, 更改participating player頁
 router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
