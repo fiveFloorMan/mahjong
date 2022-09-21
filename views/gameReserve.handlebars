@@ -1,6 +1,7 @@
 <div class="container">
   {{!-- item list --}}
   <div class="row mt-2">
+  {{>message}}
     <div class="col-3"></div>
     {{!-- Game list --}}
     <div class="col-9">
@@ -12,7 +13,8 @@
                 <div class="row">
                   <div class="col-2 text-center">Game</div>
                   <div class="col-3 text-center">Date</div>
-                  <div class="col-7 text-center">Players</div>
+                  <div class="col-5 text-center">Players</div>
+                  <div class="col-2 text-center">Add</div>
                 </div>
               </div>
             </li>
@@ -20,6 +22,7 @@
         {{!-- 內容 --}}
         <ul class="list-group fw-bold">
           {{#each reserve}}
+          <form action="/games/reserve/{{this._id}}/addGame?_method=PUT" method="POST">
             <li class="row">
               <div class="col-8 list-group-item list-group-item-light">
                 {{!-- rank number --}}
@@ -28,10 +31,13 @@
                   {{!-- player name --}}
                   <div class="col-3 text-center">{{ this.date }}</div>
                   {{!-- participating player --}}
-                  <div class="col-7">{{ this.participatingPlayer}}</div>
+                  <div class="col-5">{{ this.participatingPlayer}}</div>
+                  {{!-- add this game --}}
+                  <button class="col-2 btn btn-success" type="submit">ADD</button>
                 </div>
               </div>
             </li>
+          </form>
           {{/each}}
         </ul>
       </div>

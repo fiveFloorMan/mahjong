@@ -51,10 +51,33 @@ router.get('/reserve', (req, res) => {
       reserve.sort((a, b) => {
         return new Date(a.date) - new Date(b.date)
       })
+      for(let i = 0; i < reserve.length; i++){
+        let index = reserve[i].participatingPlayer.indexOf('')
+        if(index > -1){
+          reserve[i].participatingPlayer.splice(index) 
+        }
+      }
       return res.render('gameReserve', { reserve })
     })
     .catch(error => console.log(error))
 })
 
-
+// 使用者選擇參加game的data
+router.put('/reserve/:reservedId/addGame', (req, res) => {
+  const { reservedId } = req.params
+  const newPlayer = res.locals.user
+  Reserve.findById({ _id: reservedId })
+    .lean()
+    .then(game => {
+      
+      if(game.participatingPlayer.length === 4){
+        req.flash('warning_msg', '這場已經滿桌了, 歡迎你選擇其他場次')
+        return res.redirect('/games/reserve');
+      };
+      
+      
+      
+    })
+  
+})
 module.exports = router
