@@ -128,12 +128,13 @@ router.post('/:reservedId/openGameReserve/edit', (req, res) => {
 
 // 由admin 編輯預約的資料, 更改participating player頁
 router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
-  
   Player.find()
     .lean()
     .then(Data => {
       const playerList = Data.map(data => data.playerName)
       const { reservedId } = req.params
+      JSON.stringify(reservedId)
+      console.log('reservedId', reservedId)
       const { participatingPlayer } = req.body
       // 整理participating player list
       const participatingPlayerArray = participatingPlayer.split(',')
@@ -153,9 +154,28 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
     .catch(error => console.log(error))
 })
 
+// 接收更改參賽玩家的中間站
+router.post('/participatingPlayerChange/passing', (req, res) => {
+  const { reservedId } = req.body
+  const players = req.body.participatingPlayerEdit
+  Reserve.findOneAndUpdate({ _id : reservedId }, {
+    participatingPlayer: players},
+    { new: false }
+    )
+    .then(() => { req.flash( 'success_msg', `更改成功了` )})
+    .then(() => { return res.redirect(`/admin/openGameReserve`)})
+    .catch(error => console.log(error))
+})
+
+// 更改
 router.put('/:reservedId/openGameReserve/edit', (req, res) => {
+  const reservedId = req.params
   const { participatingPlayerEdit } = req.body
-  return res.redirect(`/admin/${reservedId}`)
+  console.log('participatingPlayerEdit', participatingPlayerEdit)
+  // Reserve.findOneAndUpdate({ _id : reservedId },{
+
+  // })
+  return res.redirect(`/admin/${reservedId}/openGameReserve/edit`)
 })
 
 // 由admin Delete預約的資料
