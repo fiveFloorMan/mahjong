@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto mt-4">
+      {{>message}}
       <h3>Participating Player List</h3>
     <form class="mt-4" action="/admin/{{reserveId}}/openGameReserve/edit?_method=PUT" method="POST">
       {{#each cleanParticipatingPlayerArray}}
@@ -9,7 +10,21 @@
             <label for="participatingPlayerEdit">Participating Player Edit</label>
           </div>
       {{/each}}
+      <button type="submit" class="btn btn-success">Edit</button>
     </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto mt-4">
+      <h3>Player List</h3>
+      <h5>請完全依照玩家姓名(包括大小寫)填入input</h5>
+    </div>
+    <div class="row">
+      {{#each playerList}}
+      <ul class="col-8 mx-auto list-group fw-bold">
+        <li class="list-group-item list-group-item-light">{{this}}</li>
+      </ul>
+      {{/each}}
     </div>
   </div>
 </div>

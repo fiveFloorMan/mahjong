@@ -150,7 +150,6 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
       if(cleanParticipatingPlayerArray.length = 5){
         cleanParticipatingPlayerArray.splice(-1, 1)
       }
-      console.log('cleanParticipatingPlayerArray', cleanParticipatingPlayerArray)
       return res.render('openGameReservePlayerEdit', { reservedId, playerList, cleanParticipatingPlayerArray })
     })
     .catch(error => console.log(error))
