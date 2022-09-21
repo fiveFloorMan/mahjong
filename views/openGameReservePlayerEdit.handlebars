@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 mx-auto">Participating Player List
+    <div class="col-8 mx-auto mt-4">
+      <h3>Participating Player List</h3>
+    <form class="mt-4" action="/admin/{{reserveId}}/openGameReserve/edit?_method=PUT" method="POST">
       {{#each cleanParticipatingPlayerArray}}
-        <div class="card mt-4">
-          {{this}}
-        </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="participatingPlayerEdit" name="participatingPlayerEdit" placeholder="participatingPlayerEdit" value="{{this}}">
+            <label for="participatingPlayerEdit">Participating Player Edit</label>
+          </div>
       {{/each}}
+    </form>
     </div>
   </div>
 </div>

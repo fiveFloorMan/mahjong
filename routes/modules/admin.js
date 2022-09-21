@@ -103,13 +103,12 @@ router.get('/openGameReserve', (req, res) => {
 // 由admin 新增可以預約的時間
 router.post('/openGameReserve', (req, res) => {
   const openGame = req.body
-  console.log(openGame)
   Reserve.create({
     gameName: openGame.gameName,
     openAdmin: res.locals.user.playerName,
     date: openGame.openGameDate
   })
-  .then(() => {req.flash('success_msg', `成功開放了${openGame.openGameDate}的預約時間` )})
+  .then(() => { req.flash('success_msg', `成功開放了${openGame.openGameDate}的預約時間`) })
   .then(() => { return res.redirect('/admin/openGameReserve')})  
   .catch(error => console.log(error))
 })
@@ -121,6 +120,9 @@ router.post('/:reserveId/openGameReserve/edit', (req, res) => {
     .lean()
     .then(reservedEdit => {  
       const reserveParticipatingPlayerArray = reservedEdit.participatingPlayer
+      //
+      console.log('reserveParticipating', reserveParticipatingPlayerArray)
+      //
       return res.render('openGameReserveEdit', {reservedEdit, reserveId, reserveParticipatingPlayerArray})
     })
     .catch(error => console.log(error))
@@ -135,13 +137,19 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
       const playerList = Data.map(data => data.playerName)
       const { reservedId } = req.params
       const { participatingPlayer } = req.body
+      // 整理participating player list
       const participatingPlayerArray = participatingPlayer.split(',')
+      
       while(participatingPlayerArray.length < 5){
+        console.log('participatingPlayer', participatingPlayer)
         participatingPlayerArray.push('目前沒有玩家參賽')
       }
       const cleanParticipatingPlayerArray = participatingPlayerArray.filter(function(player){
         return player && player.trim()
       })
+      if(cleanParticipatingPlayerArray.length = 5){
+        cleanParticipatingPlayerArray.splice(-1, 1)
+      }
       console.log('cleanParticipatingPlayerArray', cleanParticipatingPlayerArray)
       return res.render('openGameReservePlayerEdit', { reservedId, playerList, cleanParticipatingPlayerArray })
     })
