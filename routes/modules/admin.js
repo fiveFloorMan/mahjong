@@ -113,22 +113,20 @@ router.post('/openGameReserve', (req, res) => {
   .catch(error => console.log(error))
 })
 
-// 由admin 更新預約的資料
-router.post('/:reserveId/openGameReserve/edit', (req, res) => {
-  const { reserveId } = req.params
-  Reserve.findById({ _id: reserveId })
+// 由admin 編輯預約的資料
+router.post('/:reservedId/openGameReserve/edit', (req, res) => {
+  const { reservedId } = req.params
+  Reserve.findById({ _id: reservedId })
     .lean()
     .then(reservedEdit => {  
       const reserveParticipatingPlayerArray = reservedEdit.participatingPlayer
-      //
-      console.log('reserveParticipating', reserveParticipatingPlayerArray)
-      //
-      return res.render('openGameReserveEdit', {reservedEdit, reserveId, reserveParticipatingPlayerArray})
+
+      return res.render('openGameReserveEdit', {reservedEdit, reservedId, reserveParticipatingPlayerArray})
     })
     .catch(error => console.log(error))
 })
 
-// 由admin 更改participating player
+// 由admin 編輯預約的資料, 更改participating player頁
 router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
   
   Player.find()
@@ -155,12 +153,13 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
     .catch(error => console.log(error))
 })
 
-router.put('/:reserveId/openGameReserve/edit', (req, res) => {
-  
+router.put('/:reservedId/openGameReserve/edit', (req, res) => {
+  const { participatingPlayerEdit } = req.body
+  return res.redirect(`/admin/${reservedId}`)
 })
 
 // 由admin Delete預約的資料
-router.delete('/:reserveId/openGameReserve/delete', (req, res) => {
+router.delete('/:reservedId/openGameReserve/delete', (req, res) => {
   res.redirect('/')
 })
 module.exports = router
