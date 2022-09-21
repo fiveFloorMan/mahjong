@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
-    open game reserve player edit hbs
+    <div class="col-8 mx-auto">Participating Player List
+      {{#each cleanParticipatingPlayerArray}}
+        <div class="card mt-4">
+          {{this}}
+        </div>
+      {{/each}}
+    </div>
   </div>
 </div>

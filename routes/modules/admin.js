@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Record = require('../../models/record.js')
 const Reserve = require('../../models/reserve')
+const Player = require('../../models/player')
 
 const errors = []
 // 新增紀錄
@@ -127,11 +128,24 @@ router.post('/:reserveId/openGameReserve/edit', (req, res) => {
 
 // 由admin 更改participating player
 router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
-  const { reservedId } = req.params
-  console.log(req.body)
-  const {participatingPlayer} = req.body
-  console.log('participatingPlayer', participatingPlayer)
-  return res.render('openGameReservePlayerEdit' )
+  
+  Player.find()
+    .lean()
+    .then(Data => {
+      const playerList = Data.map(data => data.playerName)
+      const { reservedId } = req.params
+      const { participatingPlayer } = req.body
+      const participatingPlayerArray = participatingPlayer.split(',')
+      while(participatingPlayerArray.length < 5){
+        participatingPlayerArray.push('目前沒有玩家參賽')
+      }
+      const cleanParticipatingPlayerArray = participatingPlayerArray.filter(function(player){
+        return player && player.trim()
+      })
+      console.log('cleanParticipatingPlayerArray', cleanParticipatingPlayerArray)
+      return res.render('openGameReservePlayerEdit', { reservedId, playerList, cleanParticipatingPlayerArray })
+    })
+    .catch(error => console.log(error))
 })
 
 router.put('/:reserveId/openGameReserve/edit', (req, res) => {
