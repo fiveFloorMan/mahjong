@@ -1,1 +1,40 @@
-here is gameReserve.handlebars
+<div class="container">
+  {{!-- item list --}}
+  <div class="row mt-2">
+    <div class="col-3"></div>
+    {{!-- Game list --}}
+    <div class="col-9">
+      <div class="row mt-2 mx-auto">
+        {{!-- 排頭 --}}
+        <ul class="list-group fw-bold">
+          <li class="row">
+              <div class="col-8 list-group-item list-group-item-dark">
+                <div class="row">
+                  <div class="col-2 text-center">Game</div>
+                  <div class="col-3 text-center">Date</div>
+                  <div class="col-7 text-center">Players</div>
+                </div>
+              </div>
+            </li>
+        </ul>
+        {{!-- 內容 --}}
+        <ul class="list-group fw-bold">
+          {{#each reserve}}
+            <li class="row">
+              <div class="col-8 list-group-item list-group-item-light">
+                {{!-- rank number --}}
+                <div class="row">
+                  <div class="col-2">{{ this.gameName }}</div>
+                  {{!-- player name --}}
+                  <div class="col-3 text-center">{{ this.date }}</div>
+                  {{!-- participating player --}}
+                  <div class="col-7">{{ this.participatingPlayer}}</div>
+                </div>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

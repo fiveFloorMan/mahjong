@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const calendar = require('node-calendar')
 
 const Record = require('../../models/record')
+const Reserve = require('../../models/reserve')
 
 // 單筆資料查詢(全體)
 router.get('/playerScore', (req, res) => {
@@ -43,10 +43,17 @@ router.get('/playerScore/search', (req, res) => {
     })
 })
 
-
 // 預定games時間
 router.get('/reserve', (req, res) => {
-  res.render('gameReserve')
+  Reserve.find()
+    .lean()
+    .then(reserve => {
+      reserve.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date)
+      })
+      return res.render('gameReserve', { reserve })
+    })
+    .catch(error => console.log(error))
 })
 
 
