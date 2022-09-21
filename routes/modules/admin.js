@@ -166,17 +166,6 @@ router.post('/participatingPlayerChange', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// 更改
-router.put('/:reservedId/openGameReserve/edit', (req, res) => {
-  const reservedId = req.params
-  const { participatingPlayerEdit } = req.body
-  console.log('participatingPlayerEdit', participatingPlayerEdit)
-  // Reserve.findOneAndUpdate({ _id : reservedId },{
-
-  // })
-  return res.redirect(`/admin/${reservedId}/openGameReserve/edit`)
-})
-
 // 由admin Delete預約的資料
 router.delete('/:reservedId/openGameReserve/delete', (req, res) => {
   res.redirect('/')
