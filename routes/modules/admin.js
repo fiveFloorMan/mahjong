@@ -66,7 +66,6 @@ router.post('/edit/:recordId', (req, res) => {
 router.put('/edit/:recordId', (req, res) => {
   const { recordId } = req.params
   const newEditData = req.body
-  console.log('req.body', req.body)
   Record.findOneAndUpdate({ _id: recordId }, {
     playerName: newEditData.playerName,
     score: newEditData.score,
@@ -113,10 +112,6 @@ router.post('/openGameReserve', (req, res) => {
   .catch(error => console.log(error))
 })
 
-
-
-
-
 // 由admin 編輯預約的資料
 router.post('/:reservedId/openGameReserve/edit', (req, res) => {
   const { reservedId } = req.params
@@ -151,8 +146,6 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
     .then(Data => {
       const playerList = Data.map(data => data.playerName)
       const { reservedId } = req.params
-      JSON.stringify(reservedId)
-      console.log('reservedId', reservedId)
       const { participatingPlayer } = req.body
       // 整理participating player list
       const participatingPlayerArray = participatingPlayer.split(',')
