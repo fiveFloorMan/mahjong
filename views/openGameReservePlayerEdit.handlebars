@@ -3,9 +3,9 @@
     <div class="col-8 mx-auto mt-4">
       {{>message}}
       <h3>Participating Player List</h3>
-    <form class="mt-4" action="/admin/participatingPlayerChange/passing" method="POST">
+    <form class="mt-4" action="/admin/participatingPlayerChange" method="POST">
       <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="reservedId" name="reservedId" placeholder="reservedId" value="{{reservedId}}">
+            <input type="text" class="form-control" id="reservedId" name="reservedId" placeholder="reservedId" value="{{reservedId}}" readonly>
             <label for="reservedId">Game _id:</label>
           </div>
       {{#each cleanParticipatingPlayerArray}}

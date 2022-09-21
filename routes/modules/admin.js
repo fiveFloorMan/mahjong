@@ -139,8 +139,7 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
       // 整理participating player list
       const participatingPlayerArray = participatingPlayer.split(',')
       
-      while(participatingPlayerArray.length < 5){
-        console.log('participatingPlayer', participatingPlayer)
+      while(participatingPlayerArray.length < 6){
         participatingPlayerArray.push('目前沒有玩家參賽')
       }
       const cleanParticipatingPlayerArray = participatingPlayerArray.filter(function(player){
@@ -154,8 +153,8 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
     .catch(error => console.log(error))
 })
 
-// 接收更改參賽玩家的中間站
-router.post('/participatingPlayerChange/passing', (req, res) => {
+// 更改參賽玩家
+router.post('/participatingPlayerChange', (req, res) => {
   const { reservedId } = req.body
   const players = req.body.participatingPlayerEdit
   Reserve.findOneAndUpdate({ _id : reservedId }, {
