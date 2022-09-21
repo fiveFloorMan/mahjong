@@ -113,6 +113,10 @@ router.post('/openGameReserve', (req, res) => {
   .catch(error => console.log(error))
 })
 
+
+
+
+
 // 由admin 編輯預約的資料
 router.post('/:reservedId/openGameReserve/edit', (req, res) => {
   const { reservedId } = req.params
@@ -125,6 +129,20 @@ router.post('/:reservedId/openGameReserve/edit', (req, res) => {
     })
     .catch(error => console.log(error))
 })
+
+router.post('/gameChange', (req, res) => {
+  const data = req.body
+  Reserve.findOneAndUpdate({ _id: data.reservedId }, {
+    gameName: data.gameName,
+    date: data.date
+  }, {
+    new: false
+  })
+    .then(() => { req.flash('success_msg', '遊戲資料更改成功')})
+    .then(() => res.redirect('/admin/openGameReserve'))
+    .catch(error => console.log(error))
+})
+
 
 // 由admin 編輯預約的資料, 更改participating player頁
 router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req, res) => {
