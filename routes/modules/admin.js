@@ -179,6 +179,11 @@ router.post('/participatingPlayerChange', (req, res) => {
 
 // 由admin Delete預約的資料
 router.delete('/:reservedId/openGameReserve/delete', (req, res) => {
-  res.redirect('/')
+  const { reservedId } = req.params
+  Reserve.deleteOne({ _id : reservedId })
+    .then(() => { req.flash('success_msg', '刪除成功') })
+    .then(() => { return res.redirect('/admin/openGameReserve')})
+    .catch(error => console.log(error))
 })
+
 module.exports = router
