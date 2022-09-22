@@ -51,6 +51,7 @@ router.get('/reserve', (req, res) => {
       reserve.sort((a, b) => {
         return new Date(a.date) - new Date(b.date)
       })
+      // 清除無效值
       for(let i = 0; i < reserve.length; i++){
         let index = reserve[i].participatingPlayer.indexOf('')
         if(index > -1){
@@ -65,19 +66,25 @@ router.get('/reserve', (req, res) => {
 // 使用者選擇參加game的data
 router.put('/reserve/:reservedId/addGame', (req, res) => {
   const { reservedId } = req.params
-  const newPlayer = res.locals.user
+  const newPlayer = res.locals.user.playerName
   Reserve.findById({ _id: reservedId })
     .lean()
     .then(game => {
-      
-      if(game.participatingPlayer.length === 4){
+      const playerList = game.participatingPlayer
+      // 清除無效值 & 判斷是否滿桌
+      let index = playerList.indexOf('')
+      if(index > -1){ playerList.splice(index) }
+      if(playerList.length === 4){
         req.flash('warning_msg', '這場已經滿桌了, 歡迎你選擇其他場次')
         return res.redirect('/games/reserve');
       };
-      
-      
-      
+      // 加入牌局
+      playerList.push(newPlayer)
+      Reserve.findOneAndUpdate({ _id: reservedId},{
+        participatingPlayer: playerList
+      })
+        .then((game) => req.flash('success_msg', `已經成功加入${game.date}的牌局了`))
+        .then(() => { return res.redirect('/games/reserve')})
     })
-  
 })
 module.exports = router
