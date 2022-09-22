@@ -5,11 +5,14 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const routes = require('./routes/index')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 require('./config/mongoose')
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT
 
 
 // middle ware
@@ -30,7 +33,6 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
   console.log('res.locals.user', res.locals.user)
-
   next()
 })
 

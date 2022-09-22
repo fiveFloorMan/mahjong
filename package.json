@@ -10,7 +10,6 @@
     "seederOne": "node models/seeder/recordSeeder.js",
     "seederTwo": "node models/seeder/playerSeeder.js",
     "seederThree": "node models/seeder/reserveSeeder.js"
-
   },
   "keywords": [],
   "author": "",
@@ -18,6 +17,7 @@
   "dependencies": {
     "calendar-js": "^1.4.4",
     "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
     "express": "^4.18.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.17.1",
