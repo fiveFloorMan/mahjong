@@ -4,13 +4,13 @@ const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
-const mongoose = require('mongoose')
 const routes = require('./routes/index')
+
+require('./config/mongoose')
 
 const app = express()
 const PORT = 3000
 
-mongoose.connect('mongodb+srv://harviehung:mahjong@mahjong.uo9sd2f.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
 // middle ware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -32,16 +32,6 @@ app.use((req, res, next) => {
   console.log('res.locals.user', res.locals.user)
 
   next()
-})
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected')
 })
 
 app.use(routes)

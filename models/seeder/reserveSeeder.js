@@ -1,14 +1,7 @@
 const mongoose = require('mongoose')
 const Reserve = require('../reserve')
-const Player = require('../player.js')
 
-mongoose.connect('mongodb+srv://harviehung:mahjong@mahjong.uo9sd2f.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('reserveSeeder is error')
-})
+const db = require('../../config/mongoose')
 
 db.once('open', () => {
   console.log('mongoose connected reserveSeeder.js')

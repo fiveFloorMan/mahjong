@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "playerSeeder": "nodemon playerSeeder.js"
+    "seederOne": "node models/seeder/recordSeeder.js",
+    "seederTwo": "node models/seeder/playerSeeder.js",
+    "seederThree": "node models/seeder/reserveSeeder.js"
+
   },
   "keywords": [],
   "author": "",
