@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 require('./config/mongoose')
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 
 // middle ware
