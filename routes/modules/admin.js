@@ -94,7 +94,13 @@ router.get('/openGameReserve', (req, res) => {
   Reserve.find()
     .lean()
     .then(reserve => {
-      return res.render('openGameReserve', {reserve})
+      const { isAdmin } = res.locals.user
+      if(isAdmin === true){
+        return res.render('openGameReserve', {reserve})
+      } else {
+        errors.push({ message: '請先登入並且確保有管理員的權限' })
+        return res.render('login', { errors })
+      }
     })
     .catch(error => console.log(error))
 })
