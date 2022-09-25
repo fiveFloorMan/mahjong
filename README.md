@@ -5,15 +5,20 @@
 ## 內容
 * 一般會員視角
   * 了解全部牌友會員的**排名(rank)**
-  * 查找自己以及其他會員的**個人總成績(score)**
-  * **預約**場地開放的日期
-  * **註冊**新會員
 ![image](https://github.com/fiveFloorMan/mahjong/blob/main/rank.jpg)
+  * 查找自己以及其他會員的**個人總成績(score)**
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/singlePlayer.jpg)
+  * **預約**場地開放的日期
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/createGame.jpg)
+  * **註冊**新會員
 * 管理員視角(後台)
   * 為了怕一般會員誤闖後台，使用後台時要限定帳密&自行輸入URI !!
   * **編輯/刪除**每一筆的會員遊戲紀錄 `http://localhost:3000/admin/edit`
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/adminEdit.jpg)
   * **新增**會員遊戲紀錄 `http://localhost:3000/admin/addRecord`
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/addRecord.jpg)
   * 開放可以預約場地的日期, 編輯時間、日期和參賽會員 `http://localhost:3000/admin/openGameReserve`
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/createGame.jpg)
   
 ## 適合下載的人
 * 你想要用打麻將的方式經營客戶關係
