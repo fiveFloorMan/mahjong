@@ -9,7 +9,7 @@
   * 查找自己以及其他會員的**個人總成績(score)**
 ![image](https://github.com/fiveFloorMan/mahjong/blob/main/singlePlayer.jpg)
   * **預約**場地開放的日期
-![image](https://github.com/fiveFloorMan/mahjong/blob/main/createGame.jpg)
+![image](https://github.com/fiveFloorMan/mahjong/blob/main/addGame.jpg)
   * **註冊**新會員
 * 管理員視角(後台)
   * 為了怕一般會員誤闖後台，使用後台時要限定帳密&自行輸入URI !!
