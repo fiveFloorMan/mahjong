@@ -8,7 +8,7 @@
   * 查找自己以及其他會員的**個人總成績(score)**
   * **預約**場地開放的日期
   * **註冊**新會員
-  ![image]https://github.com/fiveFloorMan/mahjong/blob/f46b142f206da6e2c6fe655ab69e165694844d9c/addGame.jpg
+  ![image]https://github.com/fiveFloorMan/mahjong/rank.jpg
 * 管理員視角(後台)
   * 為了怕一般會員誤闖後台，使用後台時要限定帳密&自行輸入URI !!
   * **編輯/刪除**每一筆的會員遊戲紀錄 `http://localhost:3000/admin/edit`
