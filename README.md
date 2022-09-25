@@ -58,7 +58,7 @@
     | test2       | test2    |false      |
     | test3       | test3    |false      |
     | test4       | test4    |false      |
-## 開發工具
+## plugin
 * connect-flash@0.1.1
 * dotenv@8.2.0
 * express@4.18.1
@@ -68,3 +68,6 @@
 * mongoose@5.9.7
 * passport@0.4.1
 * passport-local@1.0.0
+## 開發工具
+* Robo 3T @1.4.4
+* Visual Studio
