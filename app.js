@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(session({
   secret: 'MahJongSecret',
+  name: 'user', //connect.sid = user
   resave: false,
   saveUninitialized: true
 }))
