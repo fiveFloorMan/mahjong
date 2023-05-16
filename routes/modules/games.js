@@ -73,7 +73,11 @@ router.put('/reserve/:reservedId/addGame', (req, res) => {
       const playerList = game.participatingPlayer
       // 清除無效值 & 判斷是否滿桌
       let index = playerList.indexOf('')
+      console.log(index)
       if(index > -1){ playerList.splice(index) }
+      if(playerList.indexOf('目前沒有玩家參賽') !== -1){
+        playerList.splice(playerList.indexOf('目前沒有玩家參賽'), 1)
+      }
       if(playerList.length === 4){
         req.flash('warning_msg', '這場已經滿桌了, 歡迎你選擇其他場次')
         return res.redirect('/games/reserve');

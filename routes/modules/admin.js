@@ -159,6 +159,7 @@ router.post('/:reservedId/participatingPlayerChange/openGameReserve/edit', (req,
       while(participatingPlayerArray.length < 6){
         participatingPlayerArray.push('目前沒有玩家參賽')
       }
+      
       const cleanParticipatingPlayerArray = participatingPlayerArray.filter(function(player){
         return player && player.trim()
       })
